@@ -1,13 +1,9 @@
-import React, {Component, useState} from "react";
-import { baseUrl } from '../shared/baseUrl';
-
-
+import React, {useState} from "react";
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem, Row, Col } from 'reactstrap';
 
     import {Button ,
-        Modal, ModalHeader, ModalBody,
-        Form, FormGroup, Input, Label  } from 'reactstrap';
+        Modal, ModalHeader, ModalBody, Label  } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
@@ -76,7 +72,7 @@ function Dishdetail(props) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
             <Card>
-                <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+                <CardImg top src={dish.image} alt={dish.name} />
                 <CardBody>
                   <CardTitle>{dish.name}</CardTitle>
                   <CardText>{dish.description}</CardText>
@@ -89,7 +85,7 @@ function Dishdetail(props) {
                          <ul className="list-unstyled">
                          <Stagger in>
                 {props.comments.map((comment)=>{
-                    const date = comment.date.split("T")[0];
+                    
                     return (
                         
                         <Fade in>
@@ -121,7 +117,8 @@ function Dishdetail(props) {
                                 <Col md={{size: 12}}>
                                 <Label htmlFor="rating">Rating</Label> 
                             
-                                <Control.select model=".rating" name="rating"
+                                {// eslint-disable-next-line
+                                    } <Control.select model=".rating" name="rating"
                                         className="form-control">
                                         <option>1</option>
                                         <option>2</option>
@@ -136,7 +133,8 @@ function Dishdetail(props) {
                               <Col md={{size: 12}}>
                                 <Label htmlFor="author" >Your Name</Label>
                                 
-                                    <Control.text model=".author" id="author" name="author"
+                                    {// eslint-disable-next-line
+                                    } <Control.text model=".author" id="author" name="author"
                                         placeholder="Your Name"
                                         className="form-control"
                                         validators={{
@@ -159,7 +157,8 @@ function Dishdetail(props) {
                              <Col md={{size: 12}}>
                                 <Label htmlFor="comment">Comment</Label>
                                 
-                                    <Control.textarea model=".comment" id="comment" name="comment"
+                                    {// eslint-disable-next-line
+                                    } <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="5"
                                         className="form-control" />
                                       </Col>

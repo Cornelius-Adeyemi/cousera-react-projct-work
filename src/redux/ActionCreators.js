@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
 import { baseUrl } from '../shared/baseUrl';
-import { actionTypes } from 'react-redux-form';
+
 
 
 // export const addComment = (dishId, rating, author, comment) => ({
@@ -75,7 +75,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
   };
   newComment.date = new Date().toISOString();
   
-  return fetch(baseUrl + 'comments', {
+  return fetch(baseUrl + 'comment/post', {
       method: "POST",
       body: JSON.stringify(newComment),
       headers: {
@@ -96,7 +96,9 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
           throw error;
     })
   .then(response => response.json())
-  .then(response =>{ return dispatch(addComment(response))})
+  .then(response =>{
+    
+    return dispatch(fetchComments())})
   .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
 
@@ -126,7 +128,7 @@ export const fetchDishes = () => (dispatch) => {
 export const fetchComments = () => (dispatch) => {  
   
     
-    return fetch(baseUrl + 'comments')
+    return fetch(baseUrl + 'comment')
     .then(response => {
         if (response.ok) {
           return response;
@@ -147,7 +149,7 @@ export const fetchComments = () => (dispatch) => {
 // leaders thunk action creator
 export  const fetchLeaders = ()=>(dispatch)=>{
       dispatch(leadersLoading());
-   return fetch(baseUrl + "leaders").then((response)=>{
+   return fetch(baseUrl + "leader").then((response)=>{
      if(response.ok)
      return response;
      else{

@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import higherOrderFunction from './HOC';
-
-import { DISHES } from '../shared/dishes';
 import Dishdetail from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Routes, Route,  Navigate,useParams } from 'react-router-dom';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
 import About from "./AboutComponent"
 import { connect } from 'react-redux';
-import { withRouter } from "react-router";
 import { postComment, fetchDishes, fetchComments, fetchPromos, fetchLeaders, postFeedback } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 
@@ -45,6 +38,7 @@ const mapDispatchToProps = dispatch => ({
 
 class Main extends Component {
 
+  // eslint-disable-next-line
   constructor(props) {
     super(props);
   
@@ -100,7 +94,7 @@ class Main extends Component {
         <TransitionGroup>
             <CSSTransition key={this.props.location.key}  classNames="page" timeout={300}>
         <Routes location={this.props.location}>
-              <Route path='/home' element={<HomePage/>} />
+              <Route path='/' element={<HomePage/>} />
               <Route exact path='/menu' element={ <Menu dishes={this.props.dishes} />} />
               <Route path="*" element={<Navigate to="/home" />} />
               <Route exact path="/contactus" element={<Contact postFeedback={this.props.postFeedback} resetFeedbackForm={this.props.resetFeedbackForm}/>}/>
