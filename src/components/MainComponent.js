@@ -96,7 +96,7 @@ class Main extends Component {
         <Routes location={this.props.location}>
               <Route path='/' element={<HomePage/>} />
               <Route exact path='/menu' element={ <Menu dishes={this.props.dishes} />} />
-              <Route path="*" element={<Navigate to="/home" />} />
+             
               <Route exact path="/contactus" element={<Contact postFeedback={this.props.postFeedback} resetFeedbackForm={this.props.resetFeedbackForm}/>}/>
               <Route path='/menu/:dishId' element={<DishWithId/>} />
               <Route path ='/aboutus' element={<About leaders={this.props.leaders}/>} />
