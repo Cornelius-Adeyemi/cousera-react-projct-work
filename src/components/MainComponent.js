@@ -5,7 +5,7 @@ import higherOrderFunction from './HOC';
 import Dishdetail from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { Routes, Route,  Navigate,useParams } from 'react-router-dom';
+import { Routes, Route,useParams } from 'react-router-dom';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
 import About from "./AboutComponent"
